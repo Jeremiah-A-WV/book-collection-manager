@@ -1,0 +1,98 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3b5998;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+.form label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b5998;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form button:hover {
+    background-color: #2d4373;
+}
+
+.guest-option {
+    margin-top: 20px;
+}
+
+.guest-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.guest-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.register-link {
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #3b5998; /* Same color as the login button */
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
