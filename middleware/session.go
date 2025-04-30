@@ -1,8 +1,6 @@
 package middleware
 
 import (
-	"book-collection-manager/config"
-	"book-collection-manager/repository"
 	"context"
 	"net/http"
 	"time"
@@ -55,27 +53,18 @@ func ClearSession(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// WithSession ensures the user is authenticated for each request
+// WithSession checks for session, only ensures that a user is logged in.
 func WithSession(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// Retrieve user ID from session
 		userID, ok := GetSessionUserID(r)
 		if !ok {
-			// If no session found, redirect to login
+			// No session -> redirect to login
 			http.Redirect(w, r, "/login", http.StatusSeeOther)
 			return
 		}
 
-		// Retrieve user data from the database
-		user, err := repository.GetUserByID(config.DB, userID)
-		if err != nil {
-			// If user not found, redirect to login
-			http.Redirect(w, r, "/login", http.StatusSeeOther)
-			return
-		}
-
-		// Attach user data to request
-		ctx := context.WithValue(r.Context(), "user", user)
+		// Just store the userID in context for now
+		ctx := context.WithValue(r.Context(), "userID", userID)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	}
 }

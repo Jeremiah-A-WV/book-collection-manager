@@ -38,7 +38,6 @@ func main() {
 	// Profile (secured with session)
 	mux.HandleFunc("/profile", middleware.WithSession(handler.UpdateProfileHandler))
 
-	// Start server without redundant middleware
 	log.Println("Server running on http://localhost:8080")
 	err := http.ListenAndServe(":8080", mux)
 	if err != nil {

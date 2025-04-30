@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Book List</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <style>
+        .status {
+            padding: 0.2em 0.5em;
+            border-radius: 0.5em;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 0.5em;
+        }
+
+        .to-read {
+            background-color: #ffeeba;
+            color: #856404;
+        }
+
+        .reading {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .read {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .abandoned {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">My Book List</h1>
+
+    <!-- Give the <ul> an id in case you ever want to swap the whole list -->
+    <ul id="my-list" class="book-list">
+        {{- if . }}
+        {{- range . }}
+        <li class="book-item" id="book-{{ .BookID }}">
+            <strong>{{ .Title }}</strong>
+            →
+
+            <!-- styled status -->
+            <span class="status {{ statusClass .Status }}">
+                {{ .Status }}
+            </span>
+
+            <form
+                    hx-post="/remove-from-list"
+                    hx-target="closest li"
+                    hx-swap="outerHTML"
+                    style="display:inline"
+            >
+                <input type="hidden" name="book_id" value="{{ .BookID }}">
+                <button type="submit" class="btn">Remove</button>
+            </form>
+        </li>
+        {{- end }}
+        {{- else }}
+        <li class="book-item">You have no books in your list yet.</li>
+        {{- end }}
+    </ul>
+
+    <div class="nav-links">
+        <a href="/books" class="btn link"><- Back to All Books</a>
+    </div>
+</div>
+</body>
+</html>

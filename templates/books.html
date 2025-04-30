@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Books</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+<div class="container">
+  <h1 class="title">All Books</h1>
+
+  <!-- feedback is the *only* thing HTMX will ever replace -->
+  <div id="feedback" class="feedback"></div>
+
+  <!-- full list always lives here -->
+  <ul class="book-list">
+    {{- if . }}
+    {{- range . }}
+    <li class="book-item">
+      <div class="book-info">
+        <strong>{{ .Title }}</strong>
+        <em>({{ .PublicationYear }})</em>
+        <div>Authors: {{ join .Authors ", " }}</div>
+        <div>Genres:  {{ join .Genres  ", " }}</div>
+      </div>
+      <form
+              hx-post="/add-to-list"
+              hx-target="#feedback"
+              hx-swap="innerHTML"
+              class="add-form"
+      >
+        <input type="hidden" name="book_id" value="{{ .ID }}">
+        <button type="submit" class="btn small-btn">
+          Add to My List
+        </button>
+      </form>
+    </li>
+    {{- end }}
+    {{- else }}
+    <li class="book-item">No books available.</li>
+    {{- end }}
+  </ul>
+
+  <!-- THIS NAV NEVER GETS TOUCHED BY HTMX -->
+  <div class="nav-links">
+    <a href="/myList">My Book List</a>
+    <a href="/request">Request Book</a>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a>
+  </div>
+</div>
+</body>
+</html>

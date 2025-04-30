@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.add-form {
+    margin-left: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+.small-btn {
+    font-size: 0.9rem;
+}
+
+.nav-links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+}
+
+.nav-links a , .nav-links a:active {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.feedback {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: green;
+}
