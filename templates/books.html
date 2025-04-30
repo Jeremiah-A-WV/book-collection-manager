@@ -10,10 +10,8 @@
 <div class="container">
   <h1 class="title">All Books</h1>
 
-  <!-- feedback is the *only* thing HTMX will ever replace -->
   <div id="feedback" class="feedback"></div>
 
-  <!-- full list always lives here -->
   <ul class="book-list">
     {{- if . }}
     {{- range . }}
@@ -42,7 +40,6 @@
     {{- end }}
   </ul>
 
-  <!-- THIS NAV NEVER GETS TOUCHED BY HTMX -->
   <div class="nav-links">
     <a href="/myList">My Book List</a>
     <a href="/request">Request Book</a>

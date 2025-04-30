@@ -102,7 +102,7 @@ func LogoutHandler(w http.ResponseWriter, r *http.Request) {
 	// Get user from session
 	userID, ok := middleware.GetSessionUserID(r)
 	if !ok {
-		// If no user is logged in, render the login page (or any other page)
+		// If no user is logged in, render the login page
 		http.ServeFile(w, r, "templates/login.html")
 		return
 	}

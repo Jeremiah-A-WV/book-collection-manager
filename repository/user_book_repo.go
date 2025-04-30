@@ -69,14 +69,14 @@ func GetUserBooks(ctx context.Context, userID int64) ([]model.UserBookDetail, er
 			return nil, err
 		}
 
-		// convert NullString → string
+		// convert NullString -> string
 		if isbnNull.Valid {
 			ub.ISBN = isbnNull.String
 		}
 		if notesNull.Valid {
 			ub.Notes = notesNull.String
 		}
-		// split comma-lists (GROUP_CONCAT can also be NULL)
+		// split comma-lists
 		if authorsNull.Valid && authorsNull.String != "" {
 			ub.Authors = strings.Split(authorsNull.String, ",")
 		}

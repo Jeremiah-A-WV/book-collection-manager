@@ -25,7 +25,7 @@ func HashPassword(password string) (string, error) {
 		return "", err
 	}
 
-	// Argon2id Parameters
+	// Default Argon2id Parameters
 	time := uint32(1)           // number of iterations
 	memory := uint32(64 * 1024) // 64 MB memory
 	threads := uint8(4)         // number of threads

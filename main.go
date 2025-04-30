@@ -23,19 +23,19 @@ func main() {
 	mux.HandleFunc("/guest", handler.GuestLoginHandler)
 	mux.HandleFunc("/register", handler.RegisterHandler)
 
-	// Book list (secured with session)
+	// Book list
 	mux.HandleFunc("/books", middleware.WithSession(handler.BookListHandler))
 	mux.HandleFunc("/add-to-list", middleware.WithSession(handler.AddToUserListHandler))
 
-	// Book requests (secured with session)
+	// Book requests
 	mux.HandleFunc("/request", middleware.WithSession(handler.BookRequestFormHandler))
 	mux.HandleFunc("/submit-request", middleware.WithSession(handler.BookRequestHandler))
 
-	// Personal book list (secured with session)
+	// Personal book list
 	mux.HandleFunc("/myList", middleware.WithSession(handler.UserBookListHandler))
 	mux.HandleFunc("/remove-from-list", middleware.WithSession(handler.RemoveFromUserListHandler))
 
-	// Profile (secured with session)
+	// Profile
 	mux.HandleFunc("/profile", middleware.WithSession(handler.UpdateProfileHandler))
 
 	log.Println("Server running on http://localhost:8080")
