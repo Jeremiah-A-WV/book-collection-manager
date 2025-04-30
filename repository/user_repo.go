@@ -1,8 +1,8 @@
 package repository
 
 import (
+	"book-collection-manager/auth"
 	"book-collection-manager/config"
-	"book-collection-manager/handler"
 	"book-collection-manager/model"
 	"context"
 	"database/sql"
@@ -30,7 +30,7 @@ func CreateNewUser(ctx context.Context, user *model.User) (err error) {
 	}()
 
 	// Hash the password before saving
-	hashedPassword, err := handler.HashPassword(user.Password)
+	hashedPassword, err := auth.HashPassword(user.Password)
 	if err != nil {
 		return err
 	}
@@ -139,7 +139,7 @@ func AuthenticateUser(ctx context.Context, email string, password string) (*mode
 	}
 
 	// Verify password
-	ok, err := handler.VerifyPassword(password, user.Password)
+	ok, err := auth.VerifyPassword(password, user.Password)
 	if err != nil || !ok {
 		return nil, errors.New("invalid email or password")
 	}

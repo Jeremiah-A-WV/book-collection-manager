@@ -18,7 +18,7 @@ func LoadDBConfig() {
 		log.Println("No .env file found — continuing with system env vars")
 	}
 
-	// Use environment variables
+	// Environment variables
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")
 	dbHost := os.Getenv("DB_HOST")

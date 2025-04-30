@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Requests</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Request a New Book</h1>
+
+    <form class="form" hx-post="/submit-request" hx-target="#form" hx-swap="afterend">
+      <label for="title">Book Title:</label>
+      <input name="title" id="title" placeholder="Book Title" required>
+
+      <label for="author_name">Author Name:</label>
+      <input name="author_name" id="author_name" placeholder="Author Name">
+
+      <label for="isbn">ISBN:</label>
+      <input name="isbn" id="isbn" placeholder="ISBN">
+
+      <button type="submit" class="btn">Submit Request</button>
+    </form>
+
+    <div id="form-result" class="form-result"></div>
+
+    <div class="nav-links">
+      <a href="/books" class="btn link"><- Back to Books</a>
+    </div>
+  </div>
+</body>
+</html>
